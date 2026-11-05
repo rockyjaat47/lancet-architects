@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import { useEffect, useRef } from "react";
 import { useUI } from "./Providers";
 import MenuOverlay from "./MenuOverlay";
-import { Wordmark } from "./Logo";
+import { BrandLogo } from "./Logo";
 import { site } from "@/lib/content";
 import { power3InOut } from "@/lib/motion";
 
@@ -34,7 +34,7 @@ export default function Header() {
       >
         <div className="mx-auto flex max-w-[105rem] items-center justify-between px-[3.68rem] py-[2.4rem] max-lg:px-[6vw] max-lg:py-6">
           <Link href="/" className="relative z-10 block" aria-label={`${site.name} — home`}>
-            <Wordmark priority className="h-[2.2rem] max-lg:h-7" />
+            <BrandLogo priority size="h-[3.1rem] max-lg:h-10" wordmark="h-[2.2rem] max-lg:h-7" />
           </Link>
 
           <Tagline className={`pointer-events-none absolute inset-x-0 text-center font-sans text-xs uppercase max-lg:hidden ${overPhoto && !menuOpen ? "invisible" : ""}`}>

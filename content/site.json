@@ -3,6 +3,8 @@
   "legalName": "Lancet Architects",
   "url": "https://lancetarchitect.com",
   "logo": "/images/lancet/logo-640.png",
+  "emblem": "/images/lancet/emblem.png",
+  "emblemSmall": "/images/lancet/emblem-160.png",
   "headerTagline": [
     "Architecture & interior firm",
     "in Lucknow, Uttar Pradesh"
@@ -21,10 +23,10 @@
     "country": "IN",
     "countryLabel": "India"
   },
-  "mapUrl": "https://maps.app.goo.gl/xNWVtXzzQJ2iNmRM6",
+  "mapUrl": "https://www.google.com/maps/place/LANCET+ARCHITECTS/@26.7741451,80.9430907,17z/data=!4m6!3m5!1s0x399bfd043e42fa3d:0xa8fed4d13bd8049!8m2!3d26.7741451!4d80.9430907",
   "geo": {
-    "lat": 26.7783,
-    "lng": 80.9563
+    "lat": 26.7741451,
+    "lng": 80.9430907
   },
   "phones": [
     "+91-8707438955",

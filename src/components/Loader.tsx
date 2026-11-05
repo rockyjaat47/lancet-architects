@@ -94,11 +94,14 @@ export default function Loader() {
         transition={{ duration: 0.4 }}
       >
         {/* grey logo, then the brand colour fills it from bottom to top */}
-        <div className="relative w-[17rem] max-md:w-52" style={{ aspectRatio: "958 / 248" }}>
-          <Image src={asset(site.logo)} alt="" fill priority unoptimized className="object-contain opacity-15 grayscale" />
+        <div className="relative aspect-square w-[11rem] max-md:w-36">
+          <Image src={asset(site.emblem)} alt="" fill priority unoptimized className="object-contain opacity-15 grayscale" />
           <div ref={fillRef} className="absolute inset-0" style={{ clipPath: "inset(100% 0 0 0)" }}>
-            <Image src={asset(site.logo)} alt="" fill unoptimized className="object-contain" />
+            <Image src={asset(site.emblem)} alt="" fill unoptimized className="object-contain" />
           </div>
+        </div>
+        <div className="relative mt-3 w-[12rem] max-md:w-40" style={{ aspectRatio: "958 / 248" }}>
+          <Image src={asset(site.logo)} alt="" fill priority unoptimized className="object-contain" />
         </div>
         <p className="mt-2 text-micro uppercase tracking-[0.2em] text-ink/80">Architects · Interior · Landscape</p>
       </motion.div>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { site } from "@/lib/content";
+import { BrandLogo } from "./Logo";
 import { ArrowRight, ArrowUpRight, Container } from "./ui";
 
 const nav = [
@@ -44,6 +45,14 @@ export default function Footer() {
   }
 
   const linkCls = "flex min-h-[24px] items-center hover:underline";
+  // A link to the page you are on does nothing by default: scroll back to the top instead.
+  const samePage = (href: string) => (e: React.MouseEvent) => {
+    if (pathname.replace(/\/$/, "") !== href) return;
+    e.preventDefault();
+    const lenis = (window as unknown as { __lenis?: { scrollTo: (t: number, o?: object) => void } }).__lenis;
+    if (lenis) lenis.scrollTo(0, { duration: 1.2 });
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <footer className="bg-paper">
@@ -55,14 +64,14 @@ export default function Footer() {
             <ul className="font-sans text-[1.39rem] leading-[1.35] max-md:text-2xl">
               {nav.map((n) => (
                 <li key={n.href}>
-                  <Link href={n.href} className="group inline-flex items-center gap-[0.63rem] underline-offset-4 hover:underline">
+                  <Link href={n.href} onClick={samePage(n.href)} aria-current={pathname.replace(/\/$/, "") === n.href ? "page" : undefined} className="group inline-flex items-center gap-[0.63rem] underline-offset-4 hover:underline">
                     {n.label}
                     <ArrowUpRight className="h-[0.8em] w-[0.8em] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/contact" className="group inline-flex items-center gap-[0.63rem] underline-offset-4 hover:underline">
+                <Link href="/contact" onClick={samePage("/contact")} className="group inline-flex items-center gap-[0.63rem] underline-offset-4 hover:underline">
                   <ArrowRight className="h-[0.8em] w-[0.8em]" />
                   Contact
                 </Link>
@@ -72,13 +81,16 @@ export default function Footer() {
           <div className="md:col-span-3 text-micro uppercase leading-relaxed max-md:col-span-2">
             <p className="mb-14 opacity-80 max-md:mb-4">Address</p>
             <address className="not-italic">
-              <a href={site.mapUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
+              <a href={site.mapUrl} target="_blank" rel="noopener noreferrer" className="group block underline-offset-2 hover:underline">
                 {site.address.street}
                 <br />
                 {site.address.city}, {site.address.region} {site.address.postalCode}
                 <br />
                 {site.address.countryLabel}
-                <span className="sr-only"> (open in Google Maps, new tab)</span>
+                <span className="mt-3 flex min-h-[24px] items-center gap-1 underline underline-offset-2">
+                  View on Google Maps <ArrowUpRight className="h-[0.9em] w-[0.9em]" />
+                </span>
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </address>
           </div>
@@ -112,8 +124,11 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="flex flex-wrap justify-between gap-4 border-t border-line py-6 text-micro text-ink/75">
-          <p>{site.credit}</p>
+        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line py-6 text-micro text-ink/75">
+          <p className="flex items-center gap-4">
+            <BrandLogo size="h-9" wordmark="h-4" />
+            <span>{site.credit}</span>
+          </p>
           <p className="flex gap-6 [&>a]:inline-flex [&>a]:min-h-[24px] [&>a]:items-center">
             <Link href="/terms" className="hover:underline">
               Terms & conditions

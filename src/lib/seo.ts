@@ -38,7 +38,7 @@ export function organizationJsonLd() {
     description: site.description,
     slogan: `${site.tagline.before}${site.tagline.bold}${site.tagline.after}`,
     url: SITE_URL,
-    logo: `${SITE_URL}${site.logo}`,
+    logo: `${SITE_URL}${site.emblem}`,
     image: `${SITE_URL}/og-default.png`,
     telephone: site.phones,
     email: site.emails,

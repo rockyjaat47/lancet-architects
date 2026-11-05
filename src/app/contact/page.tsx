@@ -3,7 +3,7 @@ import ContactForm from "@/components/ContactForm";
 import JsonLd from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
 import { Container, Label } from "@/components/ui";
-import { Wordmark } from "@/components/Logo";
+import { BrandLogo } from "@/components/Logo";
 import { site } from "@/lib/content";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
@@ -41,7 +41,7 @@ function MapCard() {
           <path fill="currentColor" d="M12 0C5.4 0 0 5.2 0 11.7 0 20.5 12 32 12 32s12-11.5 12-20.3C24 5.2 18.6 0 12 0zm0 16a4.3 4.3 0 1 1 0-8.6 4.3 4.3 0 0 1 0 8.6z" />
         </svg>
         <span className="rounded-card bg-paper/90 px-3 py-2 shadow-sm">
-          <Wordmark className="h-5" />
+          <BrandLogo size="h-7" wordmark="h-5" />
         </span>
       </div>
       <span className="absolute bottom-5 right-5 rounded-full bg-ink px-4 py-2 text-micro uppercase text-paper">Open in Google Maps ↗</span>
