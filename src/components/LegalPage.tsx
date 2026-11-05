@@ -1,7 +1,9 @@
+import RelatedLinks from "./RelatedLinks";
 import { Container } from "./ui";
 
 export default function LegalPage({ title, updated, children }: { title: string; updated?: string; children: React.ReactNode }) {
   return (
+    <>
     <Container className="pt-[11rem] max-lg:pt-32">
       <div className="grid grid-cols-12 gap-x-6 max-md:grid-cols-1">
         <p className="md:col-span-4 text-micro uppercase max-md:mb-6">Legal information</p>
@@ -12,5 +14,7 @@ export default function LegalPage({ title, updated, children }: { title: string;
         </div>
       </div>
     </Container>
+    <RelatedLinks exclude={["/gallery", "/blog"]} />
+    </>
   );
 }

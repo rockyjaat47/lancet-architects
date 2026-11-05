@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import RelatedLinks from "@/components/RelatedLinks";
 import JsonLd from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
 import { Container } from "@/components/ui";
 import { articles, formatDate, journalCategoryLabel, site } from "@/lib/content";
-import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
+import { SITE_URL, breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Blog",
+  title: "Architecture & Interior Design Blog",
   description: `Ideas and insights on modern, sustainable architecture and interior design from ${site.name}, Lucknow.`,
   path: "/blog",
 });
@@ -26,8 +27,9 @@ function Meta({ category, date }: { category: string; date: string }) {
 
 export default function BlogPage() {
   return (
+    <>
     <Container className="pt-[11rem] max-lg:pt-32">
-      <h1 className="text-center text-3xl max-md:text-2xl">Recent blog</h1>
+      <h1 className="text-center text-3xl max-md:text-2xl">Architecture & interior design blog</h1>
 
       <ul className="mt-[5.5rem] grid grid-cols-2 gap-x-[2.2rem] gap-y-16 max-md:mt-14 max-md:grid-cols-1">
         {articles.map((a, i) => (
@@ -35,7 +37,7 @@ export default function BlogPage() {
             <article>
               <Link href={`/blog/${a.slug}`} className="group block" tabIndex={-1} aria-hidden="true">
                 <div className="relative aspect-[3/2] overflow-hidden rounded-[0.2rem] bg-line">
-                  <Image src={a.cover} alt={a.alt} fill priority={i < 2} sizes="(max-width: 767px) 88vw, 45vw" className="object-cover transition-transform duration-1000 group-hover:scale-105" />
+                  <Image src={a.cover} alt={a.alt} fill loading={i < 2 ? "eager" : "lazy"} fetchPriority={i === 0 ? "high" : "auto"} sizes="(max-width: 767px) 88vw, 45vw" className="object-cover transition-transform duration-1000 group-hover:scale-105" />
                 </div>
               </Link>
               <div className="mt-4">
@@ -51,7 +53,24 @@ export default function BlogPage() {
           </Reveal>
         ))}
       </ul>
-      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }])} />
+      <JsonLd
+        data={[
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Blog", path: "/blog" },
+          ]),
+          {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            name: `${site.name} blog`,
+            url: `${SITE_URL}/blog/`,
+            publisher: { "@id": `${SITE_URL}/#organization` },
+            blogPost: articles.map((a) => ({ "@type": "BlogPosting", headline: a.title, url: `${SITE_URL}/blog/${a.slug}/`, datePublished: a.date })),
+          },
+        ]}
+      />
     </Container>
+    <RelatedLinks exclude={["/blog", "/gallery"]} />
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import RelatedLinks from "@/components/RelatedLinks";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import { Container } from "@/components/ui";
@@ -40,7 +41,7 @@ export default async function ArticlePage({ params }: PageProps<"/blog/[slug]">)
           <h1 className="mt-8 text-3xl uppercase leading-[1.15] max-md:text-2xl">{a.title}</h1>
         </header>
         <div className="relative mx-auto mt-16 aspect-[16/9] max-w-[72rem] overflow-hidden rounded-card bg-line">
-          <Image src={a.cover} alt={a.alt} fill priority sizes="(max-width: 1023px) 88vw, 72rem" className="object-cover" />
+          <Image src={a.cover} alt={a.alt} fill loading="eager" fetchPriority="high" sizes="(max-width: 1023px) 88vw, 72rem" className="object-cover" />
         </div>
         <div className="prose-studio mx-auto mt-16 max-w-[38rem] text-[1rem]">
           <Body />
@@ -52,6 +53,7 @@ export default async function ArticlePage({ params }: PageProps<"/blog/[slug]">)
           </Link>
         </nav>
       </Container>
+      <RelatedLinks exclude={["/blog", "/gallery"]} title="Work with us" />
       <JsonLd
         data={[
           breadcrumbJsonLd([

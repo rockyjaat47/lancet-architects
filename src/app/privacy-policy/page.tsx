@@ -3,7 +3,11 @@ import LegalPage from "@/components/LegalPage";
 import { site } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = pageMetadata({ title: "Privacy policy", path: "/privacy-policy" });
+export const metadata: Metadata = pageMetadata({
+  title: "Privacy Policy",
+  description: `How ${site.name}, Lucknow collects, uses and protects the personal information you share through our website, enquiry form, phone or WhatsApp.`,
+  path: "/privacy-policy",
+});
 
 export default function Page() {
   return (

@@ -33,7 +33,8 @@ export const viewport: Viewport = {
 };
 
 // Runs before paint: hides the first-visit loader for returning visitors.
-const visitedScript = `try{if(sessionStorage.getItem('visited'))document.documentElement.classList.add('visited')}catch(e){}`;
+// Also marks that JavaScript runs ("js"): without it the loader is never shown.
+const visitedScript = `document.documentElement.classList.add('js');try{if(sessionStorage.getItem('visited'))document.documentElement.classList.add('visited')}catch(e){}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

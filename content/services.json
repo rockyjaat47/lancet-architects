@@ -45,5 +45,68 @@
     ],
     "image": "/images/lancet/interior-kitchen.webp",
     "imageAlt": "Kitchen interior with natural wood and stone finishes"
-  }
+  },
+  "headline": "Architecture, interior & landscape services in Lucknow",
+  "offerings": [
+    {
+      "id": "architecture",
+      "title": "Architectural design",
+      "service": "Architectural design",
+      "summary": "Complete building design for homes, commercial buildings, showrooms, hospitals and institutions — from the first site study to construction drawings.",
+      "includes": [
+        "Site study and design brief",
+        "Concept planning and space layouts",
+        "Elevations, façades and 3D views",
+        "Structural coordination and working drawings",
+        "Drawings for building plan approval"
+      ],
+      "image": "/images/lancet/hospital-1.webp",
+      "imageAlt": "Hospital building with a glass curtain wall designed by Lancet Architects"
+    },
+    {
+      "id": "interior",
+      "title": "Interior design",
+      "service": "Interior design",
+      "summary": "Interiors planned around how you live or work: furniture layouts, materials, lighting and joinery details for homes, offices and retail spaces.",
+      "includes": [
+        "Furniture and space planning",
+        "Modular kitchens, wardrobes and storage",
+        "False ceilings, lighting and electrical layouts",
+        "Material, colour and finish selection",
+        "Detailed joinery and execution drawings"
+      ],
+      "image": "/images/lancet/interior-kitchen.webp",
+      "imageAlt": "Modular kitchen interior with warm wood and stone finishes"
+    },
+    {
+      "id": "landscape",
+      "title": "Landscape design",
+      "service": "Landscape design",
+      "summary": "Outdoor spaces that complete the building: entrances, courtyards, terraces and gardens designed for shade, comfort and low maintenance.",
+      "includes": [
+        "Landscape master plan",
+        "Hardscape: paving, steps, pergolas and seating",
+        "Softscape: plant and tree selection",
+        "Outdoor lighting and water features",
+        "Terrace and courtyard gardens"
+      ],
+      "image": "/images/lancet/hospital-main.webp",
+      "imageAlt": "Front elevation and entrance forecourt of the hospital designed by Lancet Architects"
+    },
+    {
+      "id": "project-management",
+      "title": "Project management & execution",
+      "service": "Project management & execution",
+      "summary": "We coordinate contractors, vendors and site work so the project is built as designed, on budget and on time.",
+      "includes": [
+        "Cost estimates and bills of quantities",
+        "Contractor and vendor coordination",
+        "Regular site visits and quality checks",
+        "Timeline and budget tracking",
+        "Final snagging and handover"
+      ],
+      "image": "/images/lancet/jewelry-2.webp",
+      "imageAlt": "Jewelry showroom façade with glass entrance, executed by Lancet Architects"
+    }
+  ]
 }

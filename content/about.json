@@ -2,7 +2,7 @@
   "heroImage": "/images/lancet/why-choose-us.jpg",
   "heroAlt": "Living and dining interior designed by Lancet Architects",
   "kicker": "Architectural & Interior Company in Lucknow",
-  "statement": "Designing the Future, Building with Passion.",
+  "statement": "14+ years designing homes, workplaces, showrooms and healthcare buildings across Lucknow.",
   "about": {
     "lead": "Lancet Architects, where creativity meets functionality in the world of architecture and interior design. We are a dedicated team of professionals committed to transforming spaces into vibrant, usable environments that reflect the unique personality and needs of each client.",
     "paragraphs": [
@@ -39,5 +39,26 @@
   "partners": {
     "image": "/images/lancet/banner2.jpg",
     "text": "Our team of skilled architects, designers, and craftsmen brings a wealth of expertise and fresh perspectives to every project. We thrive on challenges, transforming ideas into reality with meticulous attention to detail and an unwavering focus on quality."
-  }
+  },
+  "vision": "To be Lucknow’s most trusted architecture and interior practice — creating buildings and interiors that are functional, sustainable and rooted in their context.",
+  "mission": [
+    {
+      "title": "Listen first",
+      "text": "Turn every client’s needs, budget and way of life into a clear, written design brief before a single line is drawn."
+    },
+    {
+      "title": "Design with purpose",
+      "text": "Blend modern design principles with cultural elements, so each space is beautiful, practical and easy to live or work in."
+    },
+    {
+      "title": "Build responsibly",
+      "text": "Choose durable, sustainable materials, natural light and ventilation to reduce running costs and environmental impact."
+    },
+    {
+      "title": "Deliver as promised",
+      "text": "Manage drawings, contractors, site visits and timelines transparently, from concept to handover."
+    }
+  ],
+  "experienceTitle": "Experience across sectors",
+  "experienceText": "From private homes and modular interiors to retail showrooms and hospitals, our team handles architecture, interiors and landscape under one roof — so design intent is carried all the way to site."
 }

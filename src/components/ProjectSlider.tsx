@@ -288,8 +288,8 @@ export default function ProjectSlider({ projects }: { projects: SlideProject[] }
               alt={proj.alt}
               fill
               draggable={false}
-              priority={i === 0}
-              loading={i === 0 ? undefined : Math.min(i, n - i) <= 2 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "auto"}
+              loading={i === 0 ? "eager" : Math.min(i, n - i) <= 2 ? "eager" : "lazy"}
               sizes="(max-width: 767px) 80vw, 45vw"
               quality={75}
               className="pointer-events-none object-cover"
@@ -300,7 +300,7 @@ export default function ProjectSlider({ projects }: { projects: SlideProject[] }
 
       {/* caption */}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-[4.6rem] text-center max-md:bottom-[5.8rem]"
+        className="pointer-events-none absolute inset-x-0 bottom-[4.6rem] text-center max-lg:bottom-[7.2rem]"
         aria-live="polite"
       >
         <p
@@ -333,7 +333,7 @@ export default function ProjectSlider({ projects }: { projects: SlideProject[] }
       {/* drag hint */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-[4.8rem] right-[3.68rem] flex items-center gap-2 text-micro uppercase text-ink/80 transition-opacity duration-700 max-md:bottom-[3.4rem] max-md:right-1/2 max-md:translate-x-1/2 max-md:text-[0.6rem]"
+        className="pointer-events-none absolute bottom-[4.8rem] right-[3.68rem] flex items-center gap-2 text-micro uppercase text-ink/80 transition-opacity duration-700 max-lg:hidden"
         style={{ opacity: interacted ? 0 : 1 }}
       >
         <svg viewBox="0 0 40 16" className="h-3 w-8" fill="none" stroke="currentColor" strokeWidth="1.2">

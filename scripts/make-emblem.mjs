@@ -16,12 +16,12 @@ for (let i = 0, j = 0; i < data.length; i += 3, j += 4) {
 const img = sharp(out, { raw: { width: info.width, height: info.height, channels: 4 } }).trim({ threshold: 1 });
 const buf = await img.png().toBuffer();
 const sq = (s) => sharp(buf).resize(s, s, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } });
-await sq(512).png().toFile("public/images/lancet/emblem.png");
-await sq(160).png().toFile("public/images/lancet/emblem-160.png");
+await sq(320).png({ palette: true, quality: 85, effort: 10 }).toFile("public/images/lancet/emblem.png");
+await sq(128).png({ palette: true, quality: 85, effort: 10 }).toFile("public/images/lancet/emblem-160.png");
 // favicons on white so they read on dark browser tabs too
 const tile = async (s, pad) => sharp({ create: { width: s, height: s, channels: 4, background: "#ffffff" } })
   .composite([{ input: await sq(Math.round(s * (1 - pad * 2))).png().toBuffer(), gravity: "center" }]);
-await (await tile(512, 0.1)).png().toFile("src/app/icon.png");
-await (await tile(180, 0.12)).png().toFile("src/app/apple-icon.png");
-await (await tile(512, 0.1)).png().toFile("public/icon-512.png");
+await (await tile(192, 0.1)).png({ palette: true }).toFile("src/app/icon.png");
+await (await tile(180, 0.12)).png({ palette: true }).toFile("src/app/apple-icon.png");
+await (await tile(512, 0.1)).png({ palette: true }).toFile("public/icon-512.png");
 console.log("emblem done");

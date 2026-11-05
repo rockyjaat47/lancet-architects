@@ -14,11 +14,10 @@ export default function Home() {
   return (
     <>
       <Loader />
-      <p className="sr-only">
-        {site.tagline.before}
-        {site.tagline.bold}
+      <h1 className="sr-only">
+        {site.name} — architecture & interior firm in Lucknow, Uttar Pradesh. {site.tagline.bold}
         {site.tagline.after}
-      </p>
+      </h1>
       <ProjectSlider projects={slides} />
     </>
   );

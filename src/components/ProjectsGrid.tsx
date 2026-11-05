@@ -36,13 +36,14 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
                     src={p.cover}
                     alt={p.alt}
                     fill
-                    priority={i < 2}
+                    loading={i < 2 ? "eager" : "lazy"}
+                    fetchPriority={i === 0 ? "high" : "auto"}
                     sizes="(max-width: 767px) 88vw, 42vw"
                     className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                   />
                 </div>
                 <p className="mt-8 text-[0.56rem] uppercase text-ink/75 max-md:mt-4 max-md:text-micro">
-                  {categoryLabel(p.category)} / {projectLocation(p)}
+                  {[categoryLabel(p.category), projectLocation(p), p.surface, p.year].filter(Boolean).join(" / ")}
                 </p>
                 <h2 className="mt-1 text-[1.39rem] leading-snug max-md:text-lg">
                   <span className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 group-hover:bg-[length:100%_1px]">

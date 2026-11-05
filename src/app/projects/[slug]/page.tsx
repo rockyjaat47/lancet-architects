@@ -6,7 +6,8 @@ import ProjectDescription from "@/components/ProjectInfo";
 import ProjectInfoSheet from "@/components/ProjectInfoSheet";
 import JsonLd from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
-import { ArrowRight } from "@/components/ui";
+import RelatedLinks from "@/components/RelatedLinks";
+import { ArrowRight, ConsultButton } from "@/components/ui";
 import { categoryLabel, getProject, projectLocation, projects, site } from "@/lib/content";
 import { SITE_URL, breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
@@ -41,7 +42,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
       ["Category", categoryLabel(p.category)],
       ["Type", p.type],
       ["Programme", p.program],
-      ["Location", p.location],
+      ["Location", projectLocation(p)],
       ["Area", p.surface],
       ["Client", p.client],
       ["Completion", p.year ? String(p.year) : undefined],
@@ -49,10 +50,11 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
   ).filter((x): x is [string, string] => !!x[1]);
 
   return (
+    <>
     <article className="lg:grid lg:grid-cols-[74.6fr_25.4fr]">
       {/* hero */}
       <div className="relative h-svh max-lg:aspect-[1.08] max-lg:h-auto lg:col-start-1 lg:row-start-1">
-        <Image src={p.cover} alt={p.alt} fill priority sizes="(max-width: 1023px) 100vw, 75vw" className="object-cover" />
+        <Image src={p.cover} alt={p.alt} fill loading="eager" fetchPriority="high" sizes="(max-width: 1023px) 100vw, 75vw" className="object-cover" />
       </div>
 
       {/* sticky info panel */}
@@ -62,10 +64,12 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         </Link>
         <h1 className="mt-[5.6rem] text-[2.4rem] leading-[1.05] max-lg:mt-0 max-lg:text-2xl">{p.title}</h1>
         <p className="mt-3 text-micro uppercase text-ink/75">{projectLocation(p)}</p>
-        <div className="mt-12">
+        <h2 className="mt-12 text-micro uppercase text-ink/75">About the project</h2>
+        <div className="mt-4">
           <ProjectDescription paragraphs={p.description} />
         </div>
-        <dl className="mt-12 border-t border-ink text-[0.56rem] uppercase max-lg:text-micro">
+        <h2 className="mt-12 text-micro uppercase text-ink/75">Project details</h2>
+        <dl className="mt-4 border-t border-ink text-[0.56rem] uppercase max-lg:text-micro">
           {specs.map(([k, v]) => (
             <div key={k} className="flex justify-between gap-6 border-b border-ink py-[0.9rem]">
               <dt>{k}</dt>
@@ -73,13 +77,16 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
             </div>
           ))}
         </dl>
-        <Link href="/contact" className="mt-10 inline-flex items-center gap-2 text-micro uppercase hover:underline">
-          Discuss a similar project <ArrowRight className="h-3 w-3" />
-        </Link>
+        <div className="mt-10 flex flex-col items-start gap-4">
+          <ConsultButton service={p.category === "healthcare" || p.category === "commercial" ? "Architectural design" : undefined}>Discuss a similar project</ConsultButton>
+          <Link href="/services" className="text-micro uppercase underline underline-offset-4 hover:text-accent">
+            Our services
+          </Link>
+        </div>
       </ProjectInfoSheet>
 
       {/* gallery */}
-      <div className="flex flex-col gap-4 pt-4 lg:col-start-1 lg:row-start-2">
+      <section aria-label={`${p.title} — photos`} className="flex flex-col gap-4 pt-4 lg:col-start-1 lg:row-start-2">
         {p.gallery.map((src, i) => (
           <Reveal key={src} y={30} className="relative aspect-[16/9] overflow-hidden bg-line max-lg:aspect-[1.08]">
             <Image src={src} alt={`${p.title} — view ${i + 2}`} fill sizes="(max-width: 1023px) 100vw, 75vw" className="object-cover" />
@@ -107,7 +114,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
             </span>
           </Link>
         )}
-      </div>
+      </section>
 
       <JsonLd
         data={[
@@ -125,10 +132,13 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
             genre: categoryLabel(p.category),
             locationCreated: { "@type": "Place", name: projectLocation(p) },
             creator: { "@id": `${SITE_URL}/#organization`, name: site.name },
+            ...(p.year ? { dateCreated: String(p.year) } : {}),
             url: `${SITE_URL}/projects/${p.slug}`,
           },
         ]}
       />
     </article>
+    <RelatedLinks exclude={["/projects", "/blog"]} title="More from Lancet" />
+    </>
   );
 }

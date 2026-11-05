@@ -1,6 +1,7 @@
 // Shared validation for the contact form (client + API route). No external dependency.
 export type ContactInput = {
   profile: string;
+  service?: string;
   name: string;
   email: string;
   phone: string;

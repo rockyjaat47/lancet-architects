@@ -24,7 +24,7 @@ export type Project = {
   alt: string;
 };
 
-export type TeamMember = { name: string; role: string; bio: string[]; photo: string; alt: string };
+export type TeamMember = { director?: boolean; name: string; role: string; qualifications?: string; experience?: string; bio?: string[]; photo: string; alt: string };
 export type Article = { slug: string; title: string; category: string; date: string; excerpt: string; cover: string; images?: string[]; alt: string };
 export type GalleryItem = { src: string; alt: string; project?: string; label?: string };
 export type Testimonial = { name: string; text: string; rating: number };

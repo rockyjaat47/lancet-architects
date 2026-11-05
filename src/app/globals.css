@@ -96,8 +96,20 @@ html.has-cursor [contenteditable="true"] {
 }
 
 /* Loader is skipped for returning visitors (set by inline script in <head>) */
-html.visited [data-loader] {
+html.visited [data-loader],
+html:not(.js) [data-loader] {
   display: none;
+}
+/* Fail-safe: if JavaScript never starts (or stalls), the loader fades away on its own and the page shows. */
+[data-loader] {
+  animation: loader-failsafe 0.6s ease 8s forwards;
+}
+@keyframes loader-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 /* Lenis */

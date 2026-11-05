@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { site } from "@/lib/content";
 import { BrandLogo } from "./Logo";
-import { ArrowRight, ArrowUpRight, Container } from "./ui";
+import { ArrowRight, ArrowUpRight, ConsultButton, Container, WhatsAppIcon } from "./ui";
+import { consultationHref, formatPhone, telHref, whatsappHref } from "@/lib/contact";
 
 const nav = [
   { label: "Projects", href: "/projects" },
@@ -19,30 +20,52 @@ const social: { label: string; href: string }[] = [
   { label: "Google reviews", href: site.socials.google },
 ];
 
+/** Big scrolling call to action above the footer (links to the enquiry form). */
 export function Marquee() {
-  const text = `${site.tagline.before}${site.tagline.bold}${site.tagline.after}`;
+  const text = "Let’s design your space — get a free consultation →";
   return (
-    <div className="overflow-hidden py-[9rem] max-md:py-20" aria-hidden="true">
-      <div className="animate-marquee flex w-max whitespace-nowrap font-display text-[8.4vw] font-light leading-none">
-        <span className="pr-[0.4em]">{text}</span>
-        <span className="pr-[0.4em]">{text}</span>
-      </div>
-    </div>
+    <Link href={consultationHref()} prefetch={false} className="group block overflow-hidden py-[9rem] transition-colors hover:text-accent max-md:py-20">
+      <span className="sr-only">Get a free consultation</span>
+      <span aria-hidden="true" className="animate-marquee flex w-max whitespace-nowrap font-display text-[8.4vw] font-light leading-none">
+        <span className="pr-[0.6em]">{text}</span>
+        <span className="pr-[0.6em]">{text}</span>
+      </span>
+    </Link>
   );
 }
 
-const tel = (p: string) => `tel:${p.replace(/[^\d+]/g, "")}`;
+/** Home page: compact contact bar at the bottom of the slider. */
+function HomeContactBar() {
+  const item = "pointer-events-auto inline-flex min-h-[32px] items-center gap-2 rounded-full px-3 hover:bg-ink hover:text-paper transition-colors";
+  return (
+    <footer className="pointer-events-none fixed inset-x-0 bottom-[1.1rem] z-10 px-[3.68rem] text-micro uppercase text-ink max-lg:bottom-3 max-lg:px-[4vw]">
+      <div className="flex items-center justify-between gap-3 max-lg:justify-center">
+        <nav aria-label="Quick contact" className="flex flex-wrap items-center gap-1 max-lg:justify-center">
+          <a href={telHref(site.phone)} className={item}>
+            <span aria-hidden="true">☎</span>
+            <span className="max-lg:hidden">{formatPhone(site.phone)}</span>
+            <span className="lg:hidden">Call</span>
+          </a>
+          <a href={whatsappHref()} target="_blank" rel="noopener noreferrer" className={item}>
+            <WhatsAppIcon className="h-[1.3em] w-[1.3em] text-[#1a9e4b]" /> WhatsApp<span className="sr-only"> (opens in a new tab)</span>
+          </a>
+          <a href={`mailto:${site.email}`} className={`${item} normal-case`}>
+            <span aria-hidden="true">✉</span>
+            <span className="max-lg:hidden">{site.email}</span>
+            <span className="uppercase lg:hidden">Email</span>
+          </a>
+          <ConsultButton className="pointer-events-auto ml-2 !min-h-[32px] !px-4 lg:hidden">Free consultation</ConsultButton>
+        </nav>
+        <p className="pointer-events-auto normal-case text-ink/75 max-lg:hidden">{site.credit}</p>
+      </div>
+    </footer>
+  );
+}
 
 export default function Footer() {
   const pathname = usePathname();
 
-  if (pathname === "/") {
-    return (
-      <footer className="pointer-events-none fixed inset-x-0 bottom-[1.6rem] z-10 text-center text-micro text-ink/75 max-md:bottom-4">
-        <p className="pointer-events-auto inline-block">{site.credit}</p>
-      </footer>
-    );
-  }
+  if (pathname === "/") return <HomeContactBar />;
 
   const linkCls = "flex min-h-[24px] items-center hover:underline";
   // A link to the page you are on does nothing by default: scroll back to the top instead.
@@ -97,12 +120,17 @@ export default function Footer() {
           <div className="md:col-span-3 text-micro uppercase leading-relaxed max-md:col-span-1">
             <p className="mb-14 opacity-80 max-md:mb-4">Contact</p>
             {site.phones.map((p) => (
-              <a key={p} href={tel(p)} className={linkCls}>
-                {p}
+              <a key={p} href={telHref(p)} className={linkCls}>
+                <span className="sr-only">Call </span>
+                {formatPhone(p)}
               </a>
             ))}
+            <a href={whatsappHref()} target="_blank" rel="noopener noreferrer" className={`${linkCls} gap-2`}>
+              <WhatsAppIcon className="h-[1.3em] w-[1.3em] text-[#1a9e4b]" /> WhatsApp enquiry
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
             {site.emails.map((e) => (
-              <a key={e} href={`mailto:${e}`} className={`${linkCls} normal-case`}>
+              <a key={e} href={`mailto:${e}?subject=${encodeURIComponent("Project enquiry")}`} className={`${linkCls} normal-case`}>
                 {e}
               </a>
             ))}

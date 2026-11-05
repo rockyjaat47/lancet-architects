@@ -14,7 +14,7 @@ export function Wordmark({ className = "h-7", priority = false, decorative = fal
       alt={decorative ? "" : site.name}
       width={Math.round(248 * RATIO)}
       height={248}
-      priority={priority}
+      loading={priority ? "eager" : undefined}
       unoptimized
       className={`w-auto select-none ${className}`}
       draggable={false}
@@ -31,7 +31,7 @@ export function Emblem({ className = "h-8", priority = false, large = false }: {
       alt=""
       width={s}
       height={s}
-      priority={priority}
+      loading={priority ? "eager" : undefined}
       unoptimized
       className={`aspect-square w-auto select-none ${className}`}
       draggable={false}

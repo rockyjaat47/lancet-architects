@@ -54,11 +54,11 @@ All text, images and contact details were imported from the previous site (lance
 | File | Content |
 |---|---|
 | `site.json` | name, logo, taglines, SEO description, address, phones, emails, Google Maps link, WhatsApp, credit line |
-| `projects.json` | projects (slug, title, category `residential` / `commercial` / `institutional` / `landscape` / `public` / `interior`, texts, images). Optional fields `location`, `year`, `surface`, `client` appear in the spec table when filled |
+| `projects.json` | projects (slug, title, category `residential` / `commercial` / `healthcare` / `institutional` / `landscape` / `public` / `interior`, texts, images). Fields `location`, `surface` (area), `year`, `client` appear on the card and in the project's detail table as soon as they are filled (empty = hidden) |
 | `gallery.json` | gallery images (`project` links an image to its project page) |
-| `about.json` | About page: hero, intro, fields of work, stats (14+ / 500+ / 25+ / 100%), team text |
-| `team.json` | director photo, title and message |
-| `services.json` | Services page: "why choose us" list, 4-step process, sustainability section |
+| `about.json` | About page: hero, intro statement, fields of work, stats (14+ / 500+ / 25+ / 100%), **vision**, **mission** (4 points), experience text, team text |
+| `team.json` | first entry = director (`name`, `role`, `qualifications`, `experience`, photo, message). Add more people (`name`, `role`, `qualifications`, `photo`, `alt`) and a “Meet the team” grid appears on /about |
+| `services.json` | Services page: headline, "why choose us" list, **4 detailed services** (`offerings`: summary + what's included + image), 4-step process, sustainability section |
 | `testimonials.json` | client reviews imported from Google (via the old site's review widget) |
 | `journal.json` + `journal/<slug>.mdx` | blog posts: metadata in JSON, body in MDX |
 
@@ -100,15 +100,16 @@ Lighthouse (production build): desktop 100 in all four categories on every page;
 
 ## Still to check / complete
 
-- [ ] **Director’s name** — the old site only says “Director” (`content/team.json` › `name`)
-- [ ] **Project details** — location, year, area, client are unknown, so they are hidden; add them in `content/projects.json` (location falls back to “Lucknow, Uttar Pradesh”)
-- [ ] **More projects** — the old site had only 2 published projects; the kitchen/kids-room/living images are shown as “Interior Design” in the gallery and slider
+- [ ] **Director’s name, qualifications, experience** — not published anywhere on the old site. Fill `content/team.json` (first entry); they appear on /about and in the structured data automatically. The photo shows two people — if there are two directors, add the second as another entry
+- [ ] **Team profiles** — add each member (name, designation, photo in `public/images/team/`) to `content/team.json`
+- [ ] **Project details** — area (`surface`), completion `year` and `client` are unknown, so they are hidden; add them in `content/projects.json`
+- [ ] **More projects** — the old site had only 2 published projects; add each new one to `content/projects.json` (+ images) — it appears in the slider, grid, filter, sitemap
+- [ ] **Review new copy** — vision, mission, experience text (`about.json`) and the four service descriptions (`services.json › offerings`) were written from the old site's wording; check they match how the firm works
 - [ ] **Social links** — only WhatsApp and Google reviews were found; add Instagram/Facebook/LinkedIn in `content/site.json › socials` and `src/components/Footer.tsx`
-- [ ] **GPS coordinates** in `content/site.json › geo` are approximate (Telibagh, Lucknow) — used only in JSON-LD
 - [ ] **Domain** — on a custom domain set the repository variable `SITE_URL`
 - [ ] **Contact form service** — set `FORM_ENDPOINT` (and `FORM_ACCESS_KEY` for Web3Forms) as GitHub repository variables; until then the form opens the visitor’s email app
 - [ ] **Legal pages** — privacy policy and terms reuse the old site’s text; have them reviewed
-- [ ] **Logo** — `public/images/lancet/logo-640.png` (wordmark) and `src/app/icon.jpg` / `apple-icon.jpg` (emblem favicon)
+- [ ] **Logo** — wordmark `public/images/lancet/logo-640.png`; triangle emblem source `brand-src/emblem-original.png` → run `node scripts/make-emblem.mjs` to regenerate the transparent emblem and favicons
 
 ## Outils d’inspection
 

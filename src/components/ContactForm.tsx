@@ -1,14 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { validateContact, type ContactErrors, type ContactInput } from "@/lib/contact-schema";
 import { site } from "@/lib/content";
 
-const empty: ContactInput = { profile: "A homeowner", name: "", email: "", phone: "", message: "", consent: false, website: "" };
+export const SERVICES = ["Free consultation", "Architectural design", "Interior design", "Landscape design", "Project management & execution", "Other"];
+const empty: ContactInput = { profile: "A homeowner", service: SERVICES[0], name: "", email: "", phone: "", message: "", consent: false, website: "" };
 
+/** Reads ?service=… (from the "Get a free consultation" / "Discuss your project" buttons) to pre-select the service. */
 export default function ContactForm() {
-  const [v, setV] = useState<ContactInput>(empty);
+  const q = useSearchParams().get("service");
+  const service = q && SERVICES.includes(q) ? q : SERVICES[0];
+  return <ContactFormInner key={service} service={service} />;
+}
+
+export function ContactFormInner({ service = SERVICES[0] }: { service?: string }) {
+  const [v, setV] = useState<ContactInput>({ ...empty, service });
   const [errors, setErrors] = useState<ContactErrors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [serverError, setServerError] = useState("");
@@ -33,8 +42,8 @@ export default function ContactForm() {
     if (v.website) return setStatus("sent"); // honeypot
     if (!endpoint) {
       // Static hosting without a form service: open the visitor's email app, pre-filled.
-      const subject = `New enquiry from ${v.name} (${v.profile})`;
-      const body = `Profile: ${v.profile}\nName: ${v.name}\nEmail: ${v.email}\nPhone: ${v.phone}\n\n${v.message}`;
+      const subject = `${v.service}: enquiry from ${v.name} (${v.profile})`;
+      const body = `Service: ${v.service}\nProfile: ${v.profile}\nName: ${v.name}\nEmail: ${v.email}\nPhone: ${v.phone}\n\n${v.message}`;
       window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       setMailto(true);
       setStatus("sent");
@@ -47,7 +56,8 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           ...(process.env.NEXT_PUBLIC_FORM_ACCESS_KEY ? { access_key: process.env.NEXT_PUBLIC_FORM_ACCESS_KEY } : {}),
-          subject: `New enquiry from ${v.name} (${v.profile})`,
+          subject: `${v.service}: enquiry from ${v.name} (${v.profile})`,
+          service: v.service,
           profile: v.profile,
           name: v.name,
           email: v.email,
@@ -109,6 +119,24 @@ export default function ContactForm() {
             <option className="text-ink">A business</option>
             <option className="text-ink">An institution</option>
             <option className="text-ink">A job applicant</option>
+          </select>
+          <span aria-hidden="true" className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[0.6rem] opacity-80">
+            ▼
+          </span>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap items-end gap-x-6 gap-y-2">
+        <label htmlFor="service" className="font-display text-2xl leading-none text-paper/60">
+          I need
+        </label>
+        <div className="relative min-w-[18rem] flex-1 max-w-[20rem]">
+          <select id="service" name="service" value={v.service} onChange={(e) => set("service", e.target.value)} className={`${field} appearance-none pr-8 text-micro uppercase`}>
+            {SERVICES.map((s) => (
+              <option key={s} className="text-ink">
+                {s}
+              </option>
+            ))}
           </select>
           <span aria-hidden="true" className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[0.6rem] opacity-80">
             ▼

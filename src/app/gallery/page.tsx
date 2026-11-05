@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import GalleryGrid from "@/components/GalleryGrid";
+import RelatedLinks from "@/components/RelatedLinks";
 import JsonLd from "@/components/JsonLd";
 import { Container, PillLink } from "@/components/ui";
 import { gallery, site } from "@/lib/content";
 import { SITE_URL, breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Gallery",
+  title: "Gallery — Architecture & Interior Photos",
   description: `Architecture and interior design work by ${site.name}, Lucknow — façades, hospitals, showrooms, kitchens and bedrooms.`,
   path: "/gallery",
   image: gallery[0]?.src,
@@ -14,9 +15,10 @@ export const metadata: Metadata = pageMetadata({
 
 export default function GalleryPage() {
   return (
+    <>
     <Container className="pt-[11rem] max-lg:pt-32">
       <header className="flex flex-wrap items-end justify-between gap-6">
-        <h1 className="text-3xl max-md:text-2xl">Gallery</h1>
+        <h1 className="text-3xl max-md:text-2xl">Project gallery</h1>
         <PillLink href="/projects">All projects</PillLink>
       </header>
       <div className="mt-[4.5rem] max-md:mt-10">
@@ -37,5 +39,7 @@ export default function GalleryPage() {
         ]}
       />
     </Container>
+    <RelatedLinks exclude={["/gallery", "/blog"]} />
+    </>
   );
 }

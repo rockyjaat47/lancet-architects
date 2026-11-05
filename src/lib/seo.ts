@@ -3,6 +3,13 @@ import { site } from "./content";
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? site.url;
 
+/** Keep meta descriptions within the ~160 characters search engines display. */
+export function clampDescription(d: string, max = 158) {
+  if (d.length <= max) return d;
+  const cut = d.slice(0, max - 1);
+  return cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:—–-]$/, "") + "…";
+}
+
 export function pageMetadata({
   title,
   description = site.description,
@@ -18,6 +25,7 @@ export function pageMetadata({
 }): Metadata {
   // Pages without their own photo use the default social card (public/og-default.png)
   const img = image ?? "/og-default.png";
+  description = clampDescription(description);
   const images = [{ url: img, ...(image ? {} : { width: 1200, height: 630, alt: site.name }) }];
   return {
     title,
@@ -52,6 +60,7 @@ export function organizationJsonLd() {
     },
     geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
     hasMap: site.mapUrl,
+    contactPoint: site.phones.map((p) => ({ "@type": "ContactPoint", telephone: p.replace(/\s/g, ""), contactType: "customer service", areaServed: "IN", availableLanguage: ["en", "hi"] })),
     areaServed: site.areaServed,
     knowsAbout: ["Architecture", "Interior design", "Landscape design", "Residential architecture", "Commercial architecture", "Sustainable design"],
     sameAs: Object.values(site.socials),

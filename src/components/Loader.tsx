@@ -48,8 +48,23 @@ export default function Loader() {
     setIntro("loading");
     document.documentElement.style.overflow = "hidden";
     let cancelled = false;
+    let finished = false;
+    // Always reveal the site, even if the animation stalls or throws (slow device, background tab…).
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      setPhase("out");
+      setIntro("done");
+      decision = false; // client-side navigations back to "/" skip the loader
+      setTimeout(() => {
+        document.documentElement.style.overflow = "";
+        setPhase("gone");
+      }, 700);
+    };
+    const failsafe = setTimeout(finish, 7000);
+    if (countRef.current?.parentElement) countRef.current.parentElement.style.opacity = "1";
     (async () => {
-      await wait(500);
+      await wait(300);
       const ease = [0.45, 0.05, 0.55, 0.95] as const;
       await animate(0, 100, {
         duration: 2.3,
@@ -60,20 +75,16 @@ export default function Loader() {
           if (fillRef.current) fillRef.current.style.clipPath = `inset(${100 - v}% 0 0 0)`;
         },
       });
-      if (cancelled) return;
-      await wait(400);
+      if (cancelled || finished) return;
+      await wait(300);
       setPhase("tagline");
-      await wait(2000);
+      await wait(1600);
       if (cancelled) return;
-      setPhase("out");
-      setIntro("done");
-      await wait(700);
-      document.documentElement.style.overflow = "";
-      decision = false; // client-side navigations back to "/" skip the loader
-      setPhase("gone");
-    })();
+      finish();
+    })().catch(finish);
     return () => {
       cancelled = true;
+      clearTimeout(failsafe);
       document.documentElement.style.overflow = "";
     };
   }, [play, setIntro]);
@@ -95,15 +106,15 @@ export default function Loader() {
       >
         {/* grey logo, then the brand colour fills it from bottom to top */}
         <div className="relative aspect-square w-[11rem] max-md:w-36">
-          <Image src={asset(site.emblem)} alt="" fill priority unoptimized className="object-contain opacity-15 grayscale" />
+          <Image src={asset(site.emblem)} alt="" fill loading="eager" fetchPriority="high" unoptimized className="object-contain opacity-15 grayscale" />
           <div ref={fillRef} className="absolute inset-0" style={{ clipPath: "inset(100% 0 0 0)" }}>
             <Image src={asset(site.emblem)} alt="" fill unoptimized className="object-contain" />
           </div>
         </div>
         <div className="relative mt-3 w-[12rem] max-md:w-40" style={{ aspectRatio: "958 / 248" }}>
-          <Image src={asset(site.logo)} alt="" fill priority unoptimized className="object-contain" />
+          <Image src={asset(site.logo)} alt="" fill loading="eager" fetchPriority="high" unoptimized className="object-contain" />
         </div>
-        <p className="mt-2 text-micro uppercase tracking-[0.2em] text-ink/80">Architects · Interior · Landscape</p>
+        <p className="mt-2 text-micro uppercase tracking-[0.2em] text-ink">Architects · Interior · Landscape</p>
       </motion.div>
 
       <motion.div
@@ -114,7 +125,7 @@ export default function Loader() {
         <div className="h-px flex-1 bg-transparent">
           <div ref={lineRef} className="h-px w-[85%] origin-left bg-ink" style={{ transform: "scaleX(0.03)" }} />
         </div>
-        <p className="w-12 text-right text-[0.97rem] tabular-nums">
+        <p className="w-12 text-right text-[0.97rem] tabular-nums opacity-0 transition-opacity duration-300">
           <span ref={countRef}>0</span>%
         </p>
       </motion.div>

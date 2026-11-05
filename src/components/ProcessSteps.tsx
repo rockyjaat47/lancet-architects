@@ -65,8 +65,8 @@ export default function ProcessSteps({ steps }: { steps: Step[] }) {
           </p>
         </div>
       </div>
-      <h3 className="mb-10 font-display text-2xl md:hidden">Your project in {n} steps</h3>
-      <ol className="md:col-span-6 md:col-start-7 space-y-[9rem] py-[10svh] max-md:space-y-16 max-md:py-0">
+      <p className="mb-10 font-display text-2xl md:hidden">Your project in {n} steps</p>
+      <ol className="list-none md:col-span-6 md:col-start-7 space-y-[9rem] py-[10svh] max-md:space-y-16 max-md:py-0">
         {steps.map((s, i) => (
           <li
             key={s.title}
@@ -74,11 +74,11 @@ export default function ProcessSteps({ steps }: { steps: Step[] }) {
               refs.current[i] = el;
             }}
             data-i={i}
-            className={`grid grid-cols-[2rem_1fr] transition-opacity duration-700 max-md:opacity-100 ${i === active ? "opacity-100" : "opacity-75"}`}
+            className={`transition-opacity duration-700 max-md:opacity-100 ${i === active ? "opacity-100" : "opacity-75"}`}
           >
-            <span className="font-display text-lg">{i + 1}.</span>
             <div>
-              <h3 className="text-lg leading-snug">{s.title}</h3>
+              <p className="text-micro font-bold uppercase tracking-[0.08em] text-ink">Step {String(i + 1).padStart(2, "0")}</p>
+              <h3 className="mt-2 text-lg leading-snug">{s.title}</h3>
               <Reveal as="p" y={20} className="mt-8 max-w-[22rem] text-sm">
                 {s.text}
               </Reveal>

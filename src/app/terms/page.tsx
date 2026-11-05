@@ -3,7 +3,11 @@ import LegalPage from "@/components/LegalPage";
 import { site } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = pageMetadata({ title: "Terms & conditions", path: "/terms" });
+export const metadata: Metadata = pageMetadata({
+  title: "Terms & Conditions",
+  description: `Terms and conditions for using the ${site.name} website and services: intellectual property of designs, use of content and client responsibilities.`,
+  path: "/terms",
+});
 
 export default function Page() {
   return (
