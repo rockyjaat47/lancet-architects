@@ -30,6 +30,19 @@ const ITEMS: Item[] = [
   { label: "Contact", href: "/contact", shape: "drop", d: { x: 20.2, y: 7.8, r: 18 }, m: { x: -90, y: 120, r: -25 } },
 ];
 
+/** Desktop layout was measured at 1440×900 (aspect 1.6); on shorter/wider screens shrink the shapes so they never cover the legal links. */
+function useFitScale(isMobile: boolean) {
+  const [k, setK] = useState(1);
+  useEffect(() => {
+    if (isMobile) return;
+    const on = () => setK(Math.min(1, (window.innerHeight * 1.6) / window.innerWidth));
+    on();
+    window.addEventListener("resize", on);
+    return () => window.removeEventListener("resize", on);
+  }, [isMobile]);
+  return isMobile ? 1 : k;
+}
+
 function useIsMobile() {
   const [m, setM] = useState(false);
   useEffect(() => {
@@ -45,6 +58,7 @@ function useIsMobile() {
 export default function MenuOverlay({ toggleRef }: { toggleRef: RefObject<HTMLButtonElement | null> }) {
   const { menuOpen, setMenuOpen } = useUI();
   const isMobile = useIsMobile();
+  const fit = useFitScale(isMobile);
   const panelRef = useRef<HTMLDivElement>(null);
 
   // Escape to close + focus trap (overlay links + the header toggle)
@@ -92,7 +106,11 @@ export default function MenuOverlay({ toggleRef }: { toggleRef: RefObject<HTMLBu
             if (e.target === e.currentTarget) setMenuOpen(false);
           }}
         >
-          <nav aria-label="Main navigation" className="pointer-events-none absolute inset-0">
+          <nav
+            aria-label="Main navigation"
+            className="pointer-events-none absolute inset-0"
+            style={{ transform: fit < 1 ? `scale(${fit * 0.94})` : undefined }}
+          >
             {[...ITEMS].sort((a, b) => order.indexOf(a.label) - order.indexOf(b.label)).map((it) => {
               const i = ITEMS.indexOf(it);
               const p = isMobile ? it.m : it.d;
@@ -102,18 +120,18 @@ export default function MenuOverlay({ toggleRef }: { toggleRef: RefObject<HTMLBu
           </nav>
 
           <motion.ul
-            className="absolute inset-x-0 bottom-[3.6rem] flex justify-center gap-8 text-[0.83rem] uppercase tracking-[0.02em] max-md:bottom-24 max-md:gap-3 max-md:text-[0.6rem]"
+            className="pointer-events-none absolute inset-x-0 bottom-[3.6rem] z-10 flex justify-center gap-8 text-[0.83rem] uppercase tracking-[0.02em] max-md:bottom-24 max-md:gap-3 max-md:text-[0.6rem]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 0.3, duration: 0.5 } }}
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
           >
             <li>
-              <Link href="/privacy-policy" className="hover:underline">
+              <Link href="/privacy-policy" className="pointer-events-auto inline-flex min-h-[24px] items-center hover:underline">
                 Privacy policy
               </Link>
             </li>
             <li>
-              <Link href="/terms" className="hover:underline">
+              <Link href="/terms" className="pointer-events-auto inline-flex min-h-[24px] items-center hover:underline">
                 Terms & conditions
               </Link>
             </li>
