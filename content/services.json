@@ -1,0 +1,49 @@
+{
+  "intro": "Designing Dreams, Building Reality.",
+  "list": [
+    "Innovative Architecture",
+    "Project Management",
+    "Customized Design Solutions",
+    "Sustainable & Eco-Friendly",
+    "Timely Delivery",
+    "Client-Centric Approach"
+  ],
+  "image": "/images/lancet/hospital-1.webp",
+  "imageAlt": "Modern hospital façade designed by Lancet Architects",
+  "process": {
+    "title": "Take a tour of our work process.",
+    "paragraphs": [
+      "At Lancet Architects, we believe that design is not just about aesthetics; it's about creating experiences. Our approach seamlessly blends modern design principles with cultural elements.",
+      "Collaboration is at the heart of our process, allowing us to merge your vision with our creative insights to achieve extraordinary results — from concept to completion."
+    ]
+  },
+  "steps": [
+    {
+      "title": "Concept Ready",
+      "text": "Laying the foundation with creative brainstorming."
+    },
+    {
+      "title": "Idea Works!",
+      "text": "Refining concepts to align with client vision."
+    },
+    {
+      "title": "Prototyping Ideas",
+      "text": "Creating detailed models and structural blueprints."
+    },
+    {
+      "title": "Execution",
+      "text": "Turning designs into reality with precision."
+    }
+  ],
+  "eco": {
+    "label": "Sustainable & eco-friendly",
+    "title": "We blend the latest in design trends with sustainable practices.",
+    "lead": "Each project is innovative, environmentally responsible, and crafted to the highest standards of quality.",
+    "columns": [
+      "Whether it’s a home that reflects your unique personality or a commercial space designed for enhanced productivity, our mission is to craft functional and aesthetically compelling environments that align with your vision and values.",
+      "With a deep understanding of materials, aesthetics, and functionality, we ensure that each design is both timeless and innovative."
+    ],
+    "image": "/images/lancet/interior-kitchen.webp",
+    "imageAlt": "Kitchen interior with natural wood and stone finishes"
+  }
+}

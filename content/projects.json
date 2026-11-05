@@ -1,0 +1,39 @@
+[
+  {
+    "slug": "modern-and-patient-centered-hospital-architecture",
+    "title": "Modern Hospital Architecture",
+    "category": "commercial",
+    "type": "Healthcare",
+    "program": "Hospital — new construction",
+    "excerpt": "A state-of-the-art hospital designed for efficiency, comfort, and advanced healthcare services.",
+    "description": [
+      "A state-of-the-art hospital designed for efficiency, comfort, and advanced healthcare services. The building features a contemporary façade with ample natural light, spacious waiting areas, and well-planned departments for seamless patient movement.",
+      "Equipped with modern medical facilities, emergency response zones, and eco-friendly elements, this hospital ensures a healing environment. The use of durable materials, thoughtful ventilation, and accessibility-friendly design make it an ideal space for patient care and well-being."
+    ],
+    "cover": "/images/lancet/hospital-main.webp",
+    "gallery": [
+      "/images/lancet/hospital-1.webp",
+      "/images/lancet/hospital-2.webp"
+    ],
+    "alt": "Modern hospital building with a glazed façade at sunset"
+  },
+  {
+    "slug": "elegant-and-secure-jewelry-showroom-design",
+    "title": "Elegant Jewelry Showroom Design",
+    "category": "commercial",
+    "type": "Retail",
+    "program": "Jewelry showroom — façade & interiors",
+    "excerpt": "A stunning jewelry showroom designed with elegance and security in mind.",
+    "description": [
+      "A stunning jewelry showroom designed with elegance and security in mind. This architectural masterpiece features a modern glass façade, luxurious interiors, and strategic lighting to highlight the brilliance of precious ornaments.",
+      "The layout ensures a seamless customer experience, while high-security elements blend effortlessly with the aesthetics. Crafted with premium materials like marble, glass, and gold accents, this showroom reflects sophistication and trust."
+    ],
+    "cover": "/images/lancet/jewelry-main.webp",
+    "gallery": [
+      "/images/lancet/jewelry-2.webp",
+      "/images/lancet/jewelry-3.webp",
+      "/images/lancet/jewelry-4.webp"
+    ],
+    "alt": "Ornate façade of a multi-storey jewelry showroom"
+  }
+]

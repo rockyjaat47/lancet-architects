@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "the-future-of-architecture-modern-spaces",
+    "title": "The Future of Architecture: Modern Spaces",
+    "category": "architecture",
+    "date": "2025-03-03",
+    "excerpt": "From eco-friendly designs to AI-driven smart buildings, the future of architecture is more innovative than ever. We explore the latest trends shaping modern architecture.",
+    "cover": "/images/lancet/blog-future.webp",
+    "alt": "Futuristic living room with sculpted white ceiling"
+  },
+  {
+    "slug": "modern-architecture-blending-aesthetics-with-functionality",
+    "title": "Modern Architecture: Blending Aesthetics with Functionality",
+    "category": "architecture",
+    "date": "2025-03-03",
+    "excerpt": "Modern architecture focuses on blending aesthetics with functionality, ensuring that structures are not only visually stunning but also highly efficient and sustainable.",
+    "cover": "/images/lancet/blog-modern.webp",
+    "alt": "Contemporary multi-storey residence lit at dusk"
+  }
+]

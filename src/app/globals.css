@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — see REFERENCE_NOTES.md.
+ * Like the reference, the whole UI scales with the viewport: the root font-size
+ * is 1vw on desktop (14.4px at 1440px) and every size/spacing is in rem.
+ */
+@theme {
+  --color-paper: #f7f6f2;
+  --color-ink: #363e3a;
+  --color-accent: #d0181f; /* Lancet red */
+  --color-sage: #99a795;
+  --color-shape: #f1f0ec;
+  --color-line: #d4d3cf;
+  --color-black-2: #1f1f1f;
+
+  --font-sans: var(--font-karla), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
+  /* type scale (rem at 14.4px base ≈ reference px values) */
+  --text-micro: 0.6875rem;   /* ≈10px labels */
+  --text-micro--line-height: 1.4;
+  --text-xs: 0.83rem;        /* ≈12px navbar tagline */
+  --text-xs--line-height: 1.2;
+  --text-sm: 0.9rem;
+  --text-sm--line-height: 1.6;
+  --text-base: 1rem;
+  --text-base--line-height: 1.6;
+  --text-lg: 1.25rem;        /* ≈18px */
+  --text-lg--line-height: 1.4;
+  --text-xl: 1.67rem;        /* ≈24px */
+  --text-xl--line-height: 1.15;
+  --text-2xl: 2.19rem;       /* ≈31.5px */
+  --text-2xl--line-height: 1.25;
+  --text-3xl: 3.52rem;       /* ≈50.7px */
+  --text-3xl--line-height: 1.1;
+  --text-4xl: 4.77rem;       /* ≈68.7px */
+  --text-4xl--line-height: 1.05;
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-power3: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --radius-card: 0.4rem;
+  --radius-section: 1rem;
+}
+
+@layer base {
+html {
+  font-size: 15px;
+  -webkit-text-size-adjust: 100%;
+  background: var(--color-paper);
+}
+@media (min-width: 1024px) {
+  html {
+    font-size: max(14px, 1vw);
+  }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+/* Visible keyboard focus everywhere, invisible for mouse */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+}
+
+/* Native cursor hidden only while the custom cursor is active (fine pointer, ≥ 992px — see Cursor.tsx) */
+html.has-cursor,
+html.has-cursor * {
+  cursor: none;
+}
+html.has-cursor input,
+html.has-cursor textarea,
+html.has-cursor select,
+html.has-cursor [contenteditable="true"] {
+  cursor: auto;
+}
+
+/* Loader is skipped for returning visitors (set by inline script in <head>) */
+html.visited [data-loader] {
+  display: none;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Infinite marquee */
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Rich text (journal MDX / legal pages) */
+.prose-studio > * + * {
+  margin-top: 1.2em;
+}
+.prose-studio h2 {
+  font-size: var(--text-xl);
+  line-height: 1.2;
+  margin-top: 2.2em;
+}
+.prose-studio h3 {
+  font-size: var(--text-lg);
+  margin-top: 1.8em;
+}
+.prose-studio a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-studio ul {
+  list-style: disc;
+  padding-left: 1.2em;
+}
+.prose-studio ol {
+  list-style: decimal;
+  padding-left: 1.2em;
+}
+.prose-studio blockquote {
+  border-left: 1px solid var(--color-line);
+  padding-left: 1.2em;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html.menu-open {
+  overflow: hidden;
+}

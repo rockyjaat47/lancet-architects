@@ -1,0 +1,49 @@
+{
+  "name": "Lancet Architects",
+  "legalName": "Lancet Architects",
+  "url": "https://lancetarchitect.com",
+  "logo": "/images/lancet/logo-640.png",
+  "headerTagline": [
+    "Architecture & interior firm",
+    "in Lucknow, Uttar Pradesh"
+  ],
+  "tagline": {
+    "before": "",
+    "bold": "Designing the Future,",
+    "after": " Building with Passion."
+  },
+  "description": "Lancet Architects is the leading architecture firm in Lucknow, offering innovative and sustainable designs for residential, commercial, and urban projects. Transform your vision into reality with expert architects.",
+  "address": {
+    "street": "14, Raibareli Rd, near Sainik Dhaba, Amrapali Vihar, Sainik Nagar, Telibagh",
+    "postalCode": "226012",
+    "city": "Lucknow",
+    "region": "Uttar Pradesh",
+    "country": "IN",
+    "countryLabel": "India"
+  },
+  "mapUrl": "https://maps.app.goo.gl/xNWVtXzzQJ2iNmRM6",
+  "geo": {
+    "lat": 26.7783,
+    "lng": 80.9563
+  },
+  "phones": [
+    "+91-8707438955",
+    "+91-7275712348"
+  ],
+  "phone": "+91-8707438955",
+  "emails": [
+    "info@lancetarchitect.com",
+    "contact@lancetarchitect.com"
+  ],
+  "email": "info@lancetarchitect.com",
+  "areaServed": [
+    "Lucknow",
+    "Uttar Pradesh",
+    "India"
+  ],
+  "socials": {
+    "whatsapp": "https://wa.me/918707438955",
+    "google": "https://maps.app.goo.gl/xNWVtXzzQJ2iNmRM6"
+  },
+  "credit": "© 2025 Lancet Architects — All rights reserved"
+}
