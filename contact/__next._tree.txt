@@ -1,0 +1,6 @@
+:HL["/lancet-architects/_next/static/chunks/1yj03inuoce8d.css","style"]
+:HL["/lancet-architects/_next/static/media/1cde667858c37a0d-s.p.42ymt1gosxo71.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/lancet-architects/_next/static/media/c0680f1bdb3a2e90-s.p.1gsd1jahc5dg_.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+2:[["children",{"s":"__PAGE__","h":160}]]
+1:[["children",{"s":"contact","h":64,"c":"$Q2"}]]
+0:{"b":"xx5m0alyOCFPWRIOLotoH","t":{"t":{"s":"","h":16,"c":"$Q1"}}}

@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+
+Host: https://rockyjaat47.github.io/lancet-architects
+Sitemap: https://rockyjaat47.github.io/lancet-architects/sitemap.xml

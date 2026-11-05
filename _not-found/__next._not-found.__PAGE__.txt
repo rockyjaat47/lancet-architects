@@ -1,0 +1,29 @@
+2:"$Sreact.fragment"
+3:"/lancet-architects/_next/static/chunks/2n5di3ledl71q.js"
+4:"/lancet-architects/_next/static/chunks/15ptlvl__xdj_.js"
+5:"/lancet-architects/_next/static/chunks/11z8wqnnvqr1_.js"
+6:"/lancet-architects/_next/static/chunks/0xwvgzouz_d0j.js"
+7:I[39756,["$3","$4","$5","$6"],"default"]
+8:I[37457,["$3","$4","$5","$6"],"default"]
+d:I[22016,["$3","$4","$5","$6"],""]
+e:I[97367,["$3","$4","$5","$6"],"OutletBoundary"]
+f:"$Sreact.suspense"
+12:"ViewportBoundary"
+13:I[97367,["$3","$4","$5","$6"],"$12"]
+14:"MetadataBoundary"
+15:I[97367,["$3","$4","$5","$6"],"$14"]
+16:I[27201,["$3","$4","$5","$6"],"IconMark"]
+a:X
+a:C
+b:X
+c:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[["$","div",null,{"className":"mx-auto w-full max-w-[105rem] px-[3.68rem] max-lg:px-[6vw] flex min-h-[80svh] flex-col items-start justify-center pt-32","children":[["$","p",null,{"className":"text-micro uppercase","children":"Error 404"}],["$","h1",null,{"className":"mt-6 text-3xl leading-[1.1]","children":"This page doesn’t exist (anymore)."}],["$","div",null,{"className":"mt-10 flex gap-4","children":[["$","$Ld",null,{"href":"/projects","className":"group inline-flex items-center gap-2 rounded-full border px-4 py-[0.45rem] text-micro uppercase tracking-[0.02em] transition-colors duration-300 border-ink hover:bg-ink hover:text-paper","children":[["$","span",null,{"aria-hidden":"true","className":"h-[0.45rem] w-[0.45rem] rounded-full bg-current"}],"View projects"]}],["$","$Ld",null,{"href":"/","className":"self-center text-micro uppercase underline underline-offset-4","children":"Home"}]]}]]}],null,["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]]}],"p":"$@11","v":null,"s":"$b"}}]]
+1:[["children",{"s":"/_not-found","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","template":["$","$L8",null,{}]}]]}],"p":"$@9","v":"$a","s":"$b"},"c":"$Qc"}]]
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L13",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f7f6f2"}]]}],["$","$L15",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$f",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Lancet Architects — Architecture & Interior Design in Lucknow"}],["$","meta","1",{"name":"description","content":"Lancet Architects is the leading architecture firm in Lucknow, offering innovative and sustainable designs for residential, commercial, and urban projects. Transform your vision into reality with expert architects."}],["$","meta","2",{"name":"application-name","content":"Lancet Architects"}],["$","link","3",{"rel":"manifest","href":"/lancet-architects/manifest.webmanifest"}],["$","meta","4",{"name":"keywords","content":"architect in Lucknow,architecture firm Lucknow,interior designer Lucknow,landscape architect,Lancet Architects"}],["$","meta","5",{"name":"robots","content":"index, follow"}],["$","link","6",{"rel":"canonical","href":"https://rockyjaat47.github.io/lancet-architects/"}],["$","meta","7",{"property":"og:title","content":"Lancet Architects — Architecture & Interior Design in Lucknow"}],["$","meta","8",{"property":"og:description","content":"Lancet Architects is the leading architecture firm in Lucknow, offering innovative and sustainable designs for residential, commercial, and urban projects. Transform your vision into reality with expert architects."}],["$","meta","9",{"property":"og:url","content":"https://rockyjaat47.github.io/lancet-architects/"}],["$","meta","10",{"property":"og:site_name","content":"Lancet Architects"}],["$","meta","11",{"property":"og:locale","content":"en_IN"}],["$","meta","12",{"property":"og:type","content":"website"}],["$","meta","13",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","14",{"name":"twitter:title","content":"Lancet Architects — Architecture & Interior Design in Lucknow"}],["$","meta","15",{"name":"twitter:description","content":"Lancet Architects is the leading architecture firm in Lucknow, offering innovative and sustainable designs for residential, commercial, and urban projects. Transform your vision into reality with expert architects."}],["$","link","16",{"rel":"icon","href":"/lancet-architects/icon.png?icon.1hsn1dcdfhha7.png","sizes":"192x192","type":"image/png"}],["$","link","17",{"rel":"apple-touch-icon","href":"/lancet-architects/apple-icon.png?apple-icon.3ogqsvp0baq3s.png","sizes":"180x180","type":"image/png"}],["$","$L16","18",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@17","v":null,"s":"$b"}},"a":"$@18","u":"$@19","b":"xx5m0alyOCFPWRIOLotoH"}
+10:null
+19:true
+b:300
+b:C
+18:0
+9:"$undefined"
+17:"$undefined"
+11:"$undefined"
