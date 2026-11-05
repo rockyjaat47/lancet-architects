@@ -12,6 +12,7 @@ import { Container } from "./ui";
 export default function ProjectsGrid({ projects }: { projects: Project[] }) {
   const [cat, setCat] = useState("all");
   const list = cat === "all" ? projects : projects.filter((p) => p.category === cat);
+  const count = (id: string) => (id === "all" ? projects.length : projects.filter((p) => p.category === id).length);
 
   return (
     <>
@@ -69,11 +70,15 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
               type="button"
               aria-pressed={cat === c.id}
               onClick={() => setCat(c.id)}
-              className={`shrink-0 whitespace-nowrap text-[0.65rem] uppercase tracking-[0.02em] transition-opacity hover:opacity-100 max-md:text-micro ${
+              className={`flex min-h-[24px] shrink-0 items-start whitespace-nowrap text-[0.65rem] uppercase tracking-[0.02em] transition-opacity hover:opacity-100 max-md:text-micro ${
                 cat === c.id ? "underline underline-offset-4 opacity-100" : "opacity-80"
               }`}
             >
               {c.label}
+              <sup className="ml-[0.2em] text-[0.7em]" aria-hidden="true">
+                {count(c.id)}
+              </sup>
+              <span className="sr-only">, {count(c.id)} {count(c.id) === 1 ? "project" : "projects"}</span>
             </button>
           ))}
         </div>

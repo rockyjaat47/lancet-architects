@@ -42,6 +42,7 @@ export const articles = (journalData as Article[]).sort((a, b) => b.date.localeC
 const ALL_CATEGORIES: { id: string; label: string }[] = [
   { id: "residential", label: "Residential" },
   { id: "commercial", label: "Commercial" },
+  { id: "healthcare", label: "Healthcare" },
   { id: "institutional", label: "Institutional" },
   { id: "landscape", label: "Landscape" },
   { id: "public", label: "Public" },
