@@ -5,6 +5,7 @@ import { formatPhone, telHref, whatsappHref } from "@/lib/contact";
 import { WhatsAppIcon } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
 import RelatedLinks from "@/components/RelatedLinks";
+import AddressLink from "@/components/AddressLink";
 import { Reveal } from "@/components/Reveal";
 import { Container, Label } from "@/components/ui";
 import { BrandLogo } from "@/components/Logo";
@@ -35,7 +36,7 @@ function MapCard() {
         </g>
         <path d="M-20 500c120-60 200-40 320-90s200-150 320-160v330H-20z" fill="#f7f6f2" />
         <text x="40" y="535" fontSize="13" letterSpacing="2" fill="#363e3a" opacity=".55" fontFamily="sans-serif">
-          RAIBARELI ROAD · TELIBAGH · LUCKNOW
+          RAEBARELI ROAD · TELIBAGH · LUCKNOW
         </text>
       </svg>
       <div className="absolute left-[34%] top-[44%] flex items-center gap-3 transition-transform duration-500 group-hover:-translate-y-1">
@@ -93,10 +94,7 @@ export default function ContactPage() {
             </dd>
             <dt className="text-micro uppercase text-ink/75">Studio</dt>
             <dd>
-              <a href={site.mapUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                {site.address.street}, {site.address.city} {site.address.postalCode}
-                <span className="sr-only"> (open in Google Maps, new tab)</span>
-              </a>
+              <AddressLink />
             </dd>
           </dl>
         </Container>
@@ -113,9 +111,7 @@ export default function ContactPage() {
             </h2>
             <div className="space-y-10 text-[0.75rem] leading-relaxed">
               <address className="not-italic uppercase">
-                {site.address.street}
-                <br />
-                {site.address.city}, {site.address.region} {site.address.postalCode}
+                <AddressLink lines className="opacity-90 hover:opacity-100" />
               </address>
               <div>
                 <Label className="mb-2 text-[0.5rem] opacity-80">Contact details</Label>

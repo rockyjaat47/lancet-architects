@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { site } from "@/lib/content";
+import AddressLink from "./AddressLink";
 import { BrandLogo } from "./Logo";
 import { ArrowRight, ArrowUpRight, ConsultButton, Container, WhatsAppIcon } from "./ui";
 import { consultationHref, formatPhone, telHref, whatsappHref } from "@/lib/contact";
@@ -104,15 +105,9 @@ export default function Footer() {
           <div className="md:col-span-3 text-micro uppercase leading-relaxed max-md:col-span-2">
             <p className="mb-14 opacity-80 max-md:mb-4">Address</p>
             <address className="not-italic">
-              <a href={site.mapUrl} target="_blank" rel="noopener noreferrer" className="group block underline-offset-2 hover:underline">
-                {site.address.street}
-                <br />
-                {site.address.city}, {site.address.region} {site.address.postalCode}
-                <br />
-                {site.address.countryLabel}
-                <span className="mt-3 flex min-h-[24px] items-center gap-1 underline underline-offset-2">
-                  View on Google Maps <ArrowUpRight className="h-[0.9em] w-[0.9em]" />
-                </span>
+              <AddressLink lines country className="block" />
+              <a href={site.mapUrl} target="_blank" rel="noopener noreferrer" className="mt-3 flex min-h-[24px] items-center gap-1 underline underline-offset-2 hover:opacity-80">
+                View on Google Maps <ArrowUpRight className="h-[0.9em] w-[0.9em]" />
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </address>

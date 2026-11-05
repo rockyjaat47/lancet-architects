@@ -16,17 +16,17 @@
   },
   "description": "Lancet Architects is the leading architecture firm in Lucknow, offering innovative and sustainable designs for residential, commercial, and urban projects. Transform your vision into reality with expert architects.",
   "address": {
-    "street": "14, Raibareli Rd, near Sainik Dhaba, Amrapali Vihar, Sainik Nagar, Telibagh",
-    "postalCode": "226012",
+    "street": "14, Raebareli Rd, near SAINIK DHABA, Amrapali Vihar, Sainik Nagar, Telibagh",
+    "postalCode": "226002",
     "city": "Lucknow",
     "region": "Uttar Pradesh",
     "country": "IN",
     "countryLabel": "India"
   },
-  "mapUrl": "https://www.google.com/maps/place/LANCET+ARCHITECTS/@26.7741451,80.9430907,17z/data=!4m6!3m5!1s0x399bfd043e42fa3d:0xa8fed4d13bd8049!8m2!3d26.7741451!4d80.9430907",
+  "mapUrl": "https://www.google.com/maps?ll=26.774145,80.943091&z=15&t=m&hl=en&gl=IN&mapclient=embed&cid=761087777348354121",
   "geo": {
-    "lat": 26.7741451,
-    "lng": 80.9430907
+    "lat": 26.774145,
+    "lng": 80.943091
   },
   "phones": [
     "+91 87074 38955",

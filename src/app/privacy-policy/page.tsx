@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
+import AddressLink from "@/components/AddressLink";
 import { site } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 
@@ -61,7 +62,7 @@ export default function Page() {
         <br />
         Email: {site.emails.join(", ")}
         <br />
-        Address: {site.address.street}, {site.address.city}, {site.address.region} {site.address.postalCode}
+        Address: <AddressLink />
       </p>
     </LegalPage>
   );
