@@ -47,6 +47,29 @@ This builds with the right sub-path (`/lancet-architects`) and force-pushes `out
 **Images:** the static host has no image optimizer, so responsive WebP variants are pre-generated in `public/images/_w/`
 (manifest: `src/lib/image-manifest.json`). After adding or replacing photos run `npm run images`, then commit.
 
+## Admin panel (`/admin`)
+
+Live at **https://rockyjaat47.github.io/lancet-architects/admin/** — the client signs in with an email + password and can:
+
+- add / edit / delete / reorder **projects** (name, category, location, area, year, client, summary, description, main photo, more photos),
+- manage the **gallery**, **blog posts** (with article text), **client reviews** and **team** (director = first person),
+- edit the **About** and **Services** pages and the **site settings** (phones, emails, WhatsApp, address, Google Maps link, taglines),
+- upload photos from phone or computer (resized to WebP in the browser, max 2400 px),
+- **Publish changes** → one commit to `main` → GitHub Actions rebuilds the site (`.github/workflows/deploy.yml`) → live in ~2–3 min. A badge shows progress; a failed build leaves the previous site online,
+- change the login email/password (Account).
+
+### How the login works (no server)
+`public/admin-auth.json` contains a GitHub access token **encrypted** with the admin email + password (PBKDF2-SHA256 600 000 iterations → AES-256-GCM). The password is not stored anywhere; a wrong email/password simply cannot decrypt it. After sign-in the token stays in the browser tab only (sessionStorage) and is sent only to api.github.com. Auto sign-out after 1 hour of inactivity.
+Because the encrypted file is public, **use a strong password** (12+ characters, not a name + digits).
+
+### One-time setup
+1. **Workflow permission** (lets the site rebuild itself): `gh auth refresh -h github.com -s workflow`, then push `.github/workflows/deploy.yml`.
+2. **Access token** — github.com → Settings → Developer settings → *Fine-grained personal access tokens* → *Generate new token*:
+   repository access *Only select repositories* → `lancet-architects`; permissions **Contents: Read and write**, **Actions: Read-only**; expiration as long as allowed.
+3. In the project folder: `npm run admin:setup` → enter the admin email, password and the token (hidden input) → it checks the token, writes the encrypted `public/admin-auth.json` and pushes it.
+
+When the token expires, sign-in shows an error: create a new token and run `npm run admin:setup` again (content is not affected).
+
 ## Content (Lancet Architects)
 
 All text, images and contact details were imported from the previous site (lancetarchitect.netlify.app) and live in `content/` — no code to touch:

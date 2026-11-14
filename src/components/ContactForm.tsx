@@ -4,9 +4,10 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { validateContact, type ContactErrors, type ContactInput } from "@/lib/contact-schema";
-import { site } from "@/lib/content";
+import { services, site } from "@/lib/content";
 
-export const SERVICES = ["Free consultation", "Architectural design", "Interior design", "Landscape design", "Project management & execution", "Other"];
+// "I need" options follow the services edited in content/services.json (admin › Services page).
+export const SERVICES = ["Free consultation", ...services.offerings.map((o) => o.service || o.title), "Other"];
 const empty: ContactInput = { profile: "A homeowner", service: SERVICES[0], name: "", email: "", phone: "", message: "", consent: false, website: "" };
 
 /** Reads ?service=… (from the "Get a free consultation" / "Discuss your project" buttons) to pre-select the service. */

@@ -2,11 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Karla, Outfit } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Cursor from "@/components/Cursor";
-import SmoothScroll from "@/components/SmoothScroll";
-import CookieBanner from "@/components/CookieBanner";
+import SiteChrome from "@/components/SiteChrome";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/content";
 import { SITE_URL, organizationJsonLd } from "@/lib/seo";
@@ -50,12 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <Providers>
-          <Header />
-          <main id="contenu">{children}</main>
-          <Footer />
-          <CookieBanner />
-          <Cursor />
-          <SmoothScroll />
+          <SiteChrome>{children}</SiteChrome>
         </Providers>
         <JsonLd data={organizationJsonLd()} />
       </body>
